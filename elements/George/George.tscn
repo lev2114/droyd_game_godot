@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://did78rn68vacv"]
 
-[ext_resource type="Script" uid="uid://cf8n0gkec46xb" path="res://elements/George/georgeScript.gd" id="1_yiuy0"]
-[ext_resource type="Texture2D" uid="uid://cj5io5uuupmbl" path="res://assets/Снимок экрана 2025-10-07 111623.png" id="2_ut1aa"]
+[ext_resource type="Script" uid="uid://bgx1hvhrsjq7t" path="res://elements/George/george.gd" id="1_yiuy0"]
+[ext_resource type="Texture2D" uid="uid://ddo71v75hqfwm" path="res://assets/Снимок экрана 2025-10-07 111623.png" id="2_ut1aa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vy02y"]
 radius = 49.0408
@@ -15,3 +15,5 @@ texture = ExtResource("2_ut1aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vy02y")
+
+[node name="Camera2D" type="Camera2D" parent="."]

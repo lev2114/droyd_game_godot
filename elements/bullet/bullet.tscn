@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8htrbv6tlxwn"]
+
+[ext_resource type="Texture2D" uid="uid://chwuwv0mcb1k4" path="res://assets/pngwing.com.png" id="1_6321c"]
+[ext_resource type="Script" uid="uid://drbabiw7batiw" path="res://elements/bullet/bullet.gd" id="1_rbwxg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_88wav"]
+radius = 5.0
+height = 48.0
+
+[node name="bullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_rbwxg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+rotation = 4.712389
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_6321c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_88wav")
+debug_color = Color(0.873527, 0.00045762717, 0.84219825, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

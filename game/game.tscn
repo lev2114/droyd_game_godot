@@ -13,7 +13,7 @@ texture = ExtResource("2_4fuuu")
 [node name="George" parent="." instance=ExtResource("3_dxrkv")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(-298, -105)
+position = Vector2(-482, -119)
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("3_h7iqs")]
 position = Vector2(402, -268)

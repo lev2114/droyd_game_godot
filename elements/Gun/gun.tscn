@@ -1,8 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://j784c3lwsblj"]
+[gd_scene load_steps=4 format=3 uid="uid://j784c3lwsblj"]
 
 [ext_resource type="Script" uid="uid://bi02t20kkhf6q" path="res://elements/Gun/gun.gd" id="1_8m3xb"]
+[ext_resource type="AudioStream" uid="uid://b8y6jhqv12yfc" path="res://assets/sounds/807412__jmschl96__gunshot.wav" id="2_nuog2"]
+[ext_resource type="Texture2D" uid="uid://hsptvnvr1qd4" path="res://assets/pngwing.com (1).png" id="3_fl546"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_8m3xb")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nuog2")
+volume_db = -20.53
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_fl546")

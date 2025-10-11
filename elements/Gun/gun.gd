@@ -3,7 +3,7 @@ extends Node2D
 @export var bullet_scene: PackedScene = preload("res://elements/bullet/bullet.tscn")
 @export var fire_rate: float = 1.0
 @export var bullet_speed: float = 500.0
-@export var level: int = 4
+@export var level: int = 1
 @onready var timer: Timer = $Timer
 
 func _ready() -> void:
@@ -70,3 +70,17 @@ func shoot(target: CharacterBody2D) -> void:
 	# увеличенный урон только на 3 уровне
 	if level >= 3:
 		bullet.damage *= 2
+	
+	# --- ЭФФЕКТЫ ---
+	# звук
+	var audio = $AudioStreamPlayer2D
+	audio.pitch_scale = randf_range(0.95, 1.05) # лёгкое разнообразие
+	audio.play()
+
+	# вспышка
+	var flash = $Sprite2D
+	flash.rotation = atan2(dir.y, dir.x)
+	flash.global_position = global_position + dir * 30.0
+	flash.modulate.a = 1.0
+	await get_tree().create_timer(0.05).timeout  # длительность вспышки
+	flash.modulate.a = 0.0

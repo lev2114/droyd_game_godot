@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://vo1ph3xmdsrg"]
+
+[node name="FentBeamGun" type="Node2D"]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Muzzle" type="Marker2D" parent="."]

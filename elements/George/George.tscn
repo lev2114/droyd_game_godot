@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://did78rn68vacv"]
+[gd_scene load_steps=7 format=3 uid="uid://did78rn68vacv"]
 
 [ext_resource type="Script" uid="uid://bgx1hvhrsjq7t" path="res://elements/George/george.gd" id="1_yiuy0"]
 [ext_resource type="Texture2D" uid="uid://cj5io5uuupmbl" path="res://assets/Снимок экрана 2025-10-07 111623.png" id="2_ut1aa"]
 [ext_resource type="PackedScene" uid="uid://j784c3lwsblj" path="res://elements/Gun/gun.tscn" id="3_ut1aa"]
+[ext_resource type="PackedScene" uid="uid://vo1ph3xmdsrg" path="res://elements/FentBeamGun/fent_beam_gun.tscn" id="4_vy02y"]
+[ext_resource type="Script" uid="uid://b2q7mh04okco5" path="res://elements/FentBeamGun/fent_beam_gun.gd" id="5_t7ufc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vy02y"]
 radius = 49.0408
@@ -21,3 +23,6 @@ shape = SubResource("CircleShape2D_vy02y")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Gun" parent="." instance=ExtResource("3_ut1aa")]
+
+[node name="FentBeamGun" parent="." instance=ExtResource("4_vy02y")]
+script = ExtResource("5_t7ufc")

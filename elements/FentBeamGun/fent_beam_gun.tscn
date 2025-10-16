@@ -1,7 +1,14 @@
-[gd_scene format=3 uid="uid://vo1ph3xmdsrg"]
+[gd_scene load_steps=2 format=3 uid="uid://vo1ph3xmdsrg"]
+
+[ext_resource type="AudioStream" uid="uid://kvfmku7rc33x" path="res://assets/sounds/laser_charge.wav" id="1_3x81l"]
 
 [node name="FentBeamGun" type="Node2D"]
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Muzzle" type="Marker2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_3x81l")
+volume_db = -24.808
+pitch_scale = 0.89

@@ -3,9 +3,9 @@ signal finished
 
 @export var length: float = 1200.0
 @export var thickness: float = 100.0
-@export var damage: int = 40
+@export var damage: int = 10
 @export var dir: Vector2
-@export var damage_interval: float = 1.0
+@export var damage_interval: float = 0.1
 @export var duration: float = 5.0
 @export var follow_node: Node2D
 

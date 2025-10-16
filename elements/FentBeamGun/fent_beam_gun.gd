@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var beam_scene: PackedScene = preload("res://elements/FentBeam/FentBeam.tscn")
-@export var fire_rate: float = 6.0           # время между выстрелами
+@export var fire_rate: float = 30.0          # время между выстрелами
 @export var beam_duration: float = 5.0       # длительность действия луча
 @export var beam_range: float = 1000.0       # длина луча
 @export var beam_damage: int = 40            # урон
@@ -38,7 +38,7 @@ func get_nearest_enemy() -> CharacterBody2D:
 
 # Создаёт и активирует луч
 func fire_beam(target: CharacterBody2D) -> void:
-	if beam_scene == null:
+	if (beam_scene == null) or (target == null):
 		return
 
 	var beam = beam_scene.instantiate()

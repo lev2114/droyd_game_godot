@@ -29,6 +29,8 @@ func _on_timer_timeout() -> void:
 	# Создаём луч
 	if not is_instance_valid(target) or not target.is_inside_tree():
 		target = get_nearest_enemy()
+		if not target:
+			return
 		fire_beam(target)
 	else: 
 		fire_beam(target)

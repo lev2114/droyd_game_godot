@@ -1,19 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbnnhes3j5267"]
+[gd_scene load_steps=8 format=3 uid="uid://bbnnhes3j5267"]
 
 [ext_resource type="Script" uid="uid://bn287uxdviisu" path="res://elements/FentBeam/fent_beam.gd" id="1_be87y"]
-[ext_resource type="AudioStream" uid="uid://mlj0atdg684b" path="res://assets/sounds/laser_sound.mp3" id="2_be87y"]
+[ext_resource type="Texture2D" uid="uid://bmxv6esggo2x7" path="res://assets/Lovepik_com-611645078-Particle light effect.png" id="2_52w0f"]
+[ext_resource type="AudioStream" uid="uid://r658qi37qdiw" path="res://assets/sounds/laser_sound.mp3" id="2_be87y"]
 
 [sub_resource type="Gradient" id="Gradient_be87y"]
 offsets = PackedFloat32Array(0, 0.42405063, 0.9683544, 0.98101264, 0.9936709, 1)
 colors = PackedColorArray(1.3131658, 1.3131658, 1.3131658, 1, 0.48452926, 1, 1, 1, 0.48452926, 1, 1, 0.45714283, 0.48452926, 1, 1, 0.6241758, 0.48452926, 1, 1, 0.71604395, 0.48452926, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_52w0f"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.8876405), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.13544708, 0, 0, Vector2(0.75000006, 0.078651786), 0.26723397, 0.26723397, 0, 0, Vector2(1, 0.08988774), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_67xwp"]
-offsets = PackedFloat32Array(0, 0.006666667, 0.48666668, 0.61333334, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.6933333, 0.6933333, 0.6933333, 1, 0, 1, 1, 1, 0.07058824, 0.96862745, 0.96862745, 0.8156863, 0.06979871, 0.96912754, 0.96912754, 1)
+offsets = PackedFloat32Array(0, 0.68666667, 0.92, 0.94666666, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.6933333, 0.6933333, 0.6933333, 1, 0.07058824, 0.96862745, 0.96862745, 0.8156863, 0, 1, 1, 1, 0.06979871, 0.96912754, 0.96912754, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxcfb"]
 
@@ -28,13 +29,15 @@ default_color = Color(0.6475897, 1.3131658, 1.3131658, 1)
 gradient = SubResource("Gradient_be87y")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-amount = 1000
-lifetime = 1.39
+amount = 100
+texture = ExtResource("2_52w0f")
+lifetime = 1.73
 speed_scale = 2.93
 explosiveness = 0.08
+spread = 63.18
 gravity = Vector2(0, 0)
-initial_velocity_min = 159.08
-initial_velocity_max = 229.8
+initial_velocity_min = 118.68
+initial_velocity_max = 209.6
 scale_amount_min = 0.0
 scale_amount_curve = SubResource("Curve_52w0f")
 color_ramp = SubResource("Gradient_67xwp")

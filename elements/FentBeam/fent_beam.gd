@@ -14,6 +14,8 @@ signal finished
 @onready var fx: CPUParticles2D = $CPUParticles2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 var timer: Timer
+var elapsed_time: float = 0.0
+var base_rotation = null
 
 func _ready() -> void:
 	# форма
@@ -32,7 +34,8 @@ func _ready() -> void:
 	fx.position = global_position + dir*30
 	fx.emitting = true
 	if audio.stream: audio.play()
-
+	
+	base_rotation = dir.angle()
 	# таймер урона
 	timer = Timer.new()
 	add_child(timer)
@@ -43,9 +46,13 @@ func _ready() -> void:
 	# жизнь луча
 	await end()
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if follow_node:
 		global_transform = follow_node.global_transform
+		
+		elapsed_time += delta
+		var rotation_speed = TAU / duration   # TAU = 2 * PI — полный оборот
+		rotation += base_rotation + rotation_speed * elapsed_time
 
 func _on_damage_tick() -> void:
 	deal_damage()

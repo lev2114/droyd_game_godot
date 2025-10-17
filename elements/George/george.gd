@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var speed: float = 200.0
+@export var maxHealth: int = 30
+@export var currentHealth: int = maxHealth
 
 func _ready() -> void:
 	add_to_group("player")

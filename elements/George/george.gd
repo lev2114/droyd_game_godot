@@ -1,11 +1,18 @@
 extends CharacterBody2D
 
 @export var speed: float = 200.0
-@export var maxHealth: int = 30
-@export var currentHealth: int = maxHealth
+@export var max_health: int = 30
+@export var current_health: int = max_health
+
+signal health_changed(current_health, max_health)
 
 func _ready() -> void:
 	add_to_group("player")
+	var health_bar = get_tree().get_first_node_in_group("health_bar")
+	
+	if health_bar:
+		health_changed.connect(health_bar.update_health)
+		health_changed.emit(current_health, max_health)
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float):
@@ -16,3 +23,9 @@ func _physics_process(delta: float):
 
 	velocity = input_vector * speed
 	move_and_slide()
+
+func take_damage(damage: int) -> void:
+	current_health -= damage
+	health_changed.emit(current_health, max_health)
+	if current_health <= 0:
+		queue_free()

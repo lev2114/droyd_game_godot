@@ -1,43 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://brkp2arx4tnbc"]
 
+[ext_resource type="Script" uid="uid://cdpqqw6mc8dmv" path="res://game/game.gd" id="1_h7iqs"]
 [ext_resource type="Texture2D" uid="uid://dduet3o8oxf36" path="res://assets/Official_Presidential_Portrait_of_President_Donald_J._Trump_(2025).jpg" id="2_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://did78rn68vacv" path="res://elements/George/George.tscn" id="3_dxrkv"]
-[ext_resource type="PackedScene" uid="uid://dkpmychg04xuw" path="res://elements/Enemy/Enemy.tscn" id="3_h7iqs"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_h7iqs")
 
 [node name="OfficialPresidentialPortraitOfPresidentDonaldJ_Trump(2025)" type="Sprite2D" parent="."]
 position = Vector2(-3, -2)
 texture = ExtResource("2_4fuuu")
 
 [node name="George" parent="." instance=ExtResource("3_dxrkv")]
+position = Vector2(-207, 230)
+speed = null
+maxHealth = null
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(-352, -146)
-
-[node name="CharacterBody2D7" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(-536, 141)
-
-[node name="CharacterBody2D2" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(718, 202)
-
-[node name="CharacterBody2D4" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(231, 473)
-
-[node name="CharacterBody2D9" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(431, -455)
-
-[node name="CharacterBody2D10" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(-733, 470)
-
-[node name="CharacterBody2D11" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(-123, 499)
-
-[node name="CharacterBody2D12" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(683, 616)
-
-[node name="CharacterBody2D15" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(-256, -432)
-
-[node name="CharacterBody2D16" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(-827, 2)
+[node name="Timer" type="Timer" parent="."]

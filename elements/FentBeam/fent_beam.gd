@@ -8,51 +8,49 @@ signal finished
 @export var damage_interval: float = 0.1
 @export var duration: float = 5.0
 @export var follow_node: Node2D
+@export var rotation_offset: float = 0.0   # ← добавили смещение
 
 @onready var col: CollisionShape2D = $CollisionShape2D
 @onready var line: Line2D = $Line2D
 @onready var fx: CPUParticles2D = $CPUParticles2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 var timer: Timer
 var elapsed_time: float = 0.0
-var base_rotation = null
+var base_rotation: float = 0.0
 
 func _ready() -> void:
-	# форма
 	var rect := RectangleShape2D.new()
 	rect.size = Vector2(length, thickness)
 	col.shape = rect
 	col.position = Vector2(length / 2, 0)
 
-	# визуал
-	line.points = [Vector2.ZERO + dir*30, Vector2(length, 0)]
+	line.points = [Vector2.ZERO + dir * 30, Vector2(length, 0)]
 	line.width = thickness * 0.9
 	line.default_color = Color(0.5, 1.0, 1.0, 0.8)
 	_flash_in()
 
-	# эффекты
-	fx.position = global_position + dir*30
+	fx.position = global_position + dir * 30
 	fx.emitting = true
-	if audio.stream: audio.play()
-	
+	if audio.stream:
+		audio.play()
+
 	base_rotation = dir.angle()
-	# таймер урона
+
 	timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = damage_interval
 	timer.timeout.connect(_on_damage_tick)
 	timer.start()
 
-	# жизнь луча
 	await end()
 
 func _physics_process(delta: float) -> void:
 	if follow_node:
 		global_transform = follow_node.global_transform
-		
 		elapsed_time += delta
-		var rotation_speed = TAU / duration   # TAU = 2 * PI — полный оборот
-		rotation += base_rotation + rotation_speed * elapsed_time
+		var rotation_speed = TAU / duration
+		rotation += base_rotation + rotation_speed * elapsed_time + rotation_offset  # ← вот это всё, что нужно
 
 func _on_damage_tick() -> void:
 	deal_damage()

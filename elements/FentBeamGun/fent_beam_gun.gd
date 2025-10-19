@@ -5,7 +5,7 @@ extends Node2D
 @export var beam_duration: float = 5.0  # длительность действия луча 
 @export var beam_range: float = 1000.0       # длина луча
 @export var beam_damage: int = 40            # урон
-@export var level: int = 1  # на будущее, для апгрейдов
+@export var level: int = 4  # на будущее, для апгрейдов
 @export var charge_time = 2.8            
 
 @onready var timer: Timer = $Timer
@@ -13,9 +13,20 @@ extends Node2D
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
-	timer.wait_time = fire_rate
 	timer.timeout.connect(_on_timer_timeout)
+	check_level()
 	timer.start()
+
+
+@warning_ignore("shadowed_variable")
+func check_level():
+	match level:
+		1: fire_rate = 20
+		2: fire_rate = 15
+		3: fire_rate = 10
+		4: fire_rate = 10
+	timer.wait_time = fire_rate
+	
 
 func _on_timer_timeout() -> void:
 	var target = get_nearest_enemy()
@@ -93,22 +104,36 @@ func fire_beam(target: CharacterBody2D) -> void:
 	get_tree().current_scene.add_child(beam)
 	
 	var dir = (target.global_position - global_position).normalized()
-	# позиция и направление
 	beam.global_position = muzzle.global_position
 
 	if target:
 		beam.rotation = dir.angle()
 		muzzle.rotation = dir.angle()
 	else:
-		# если врагов нет — стреляем прямо вперёд
 		beam.rotation = rotation
 
-	# передаём параметры
 	beam.length = beam_range
 	beam.damage = beam_damage
 	beam.dir = dir
 	beam.duration = beam_duration
-	beam.follow_node = muzzle  # луч следует за пушкой
+	beam.follow_node = muzzle
+	beam.rotation_offset = 0.0   # ← базовый луч
 
-	# перезапуск таймера
+	if level >= 4:
+		var second_beam = beam_scene.instantiate()
+		get_tree().current_scene.add_child(second_beam)
+		second_beam.global_position = muzzle.global_position
+		
+		if target:
+			second_beam.rotation = dir.angle() + PI
+		else:
+			second_beam.rotation = rotation + PI
+			
+		second_beam.length = beam_range
+		second_beam.damage = beam_damage
+		second_beam.dir = -dir
+		second_beam.duration = beam_duration
+		second_beam.follow_node = muzzle
+		second_beam.rotation_offset = PI   # ← вот и всё
+
 	timer.start()

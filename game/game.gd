@@ -5,6 +5,7 @@ extends Node2D
 @onready var player = $George
 @onready var player_camera = $George/Camera2D
 
+@warning_ignore("shadowed_variable")
 func spawn_enemy_near_player(player: Node2D, camera: Camera2D) -> void:
 	if not player or not is_instance_valid(player):
 		return
@@ -38,8 +39,5 @@ func _ready() -> void:
 	spawn_enemy_near_player(player, player_camera)
 
 func _on_timer_timeout() -> void:
-	spawn_enemy_near_player(player, player_camera)
-
-	
-	
-	
+	if player:
+		spawn_enemy_near_player(player, player_camera)

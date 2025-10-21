@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b42675wlc0frd"]
+
+[ext_resource type="Script" uid="uid://ck8ch62p3bj0n" path="res://elements/jewriken/jewriken.gd" id="1_6t81q"]
+[ext_resource type="Texture2D" uid="uid://cq7tej4kcswh8" path="res://assets/klipartz.com.png" id="2_qkkr3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wl1el"]
+radius = 34.0147
+
+[node name="Jewriken" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_6t81q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_qkkr3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wl1el")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

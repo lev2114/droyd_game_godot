@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var bullet_scene: PackedScene = preload("res://elements/bullet/bullet.tscn")
-@export var fire_rate: float = 1
+@export var fire_rate: float = 9999
 @export var bullet_speed: float = 500.0
 @export var level: int = 1
 @onready var timer: Timer = $Timer

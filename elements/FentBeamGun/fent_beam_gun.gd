@@ -5,7 +5,7 @@ extends Node2D
 @export var beam_duration: float = 5.0  # длительность действия луча 
 @export var beam_range: float = 1000.0       # длина луча
 @export var beam_damage: int = 40            # урон
-@export var level: int = 4  # на будущее, для апгрейдов
+@export var level: int = 0  # на будущее, для апгрейдов
 @export var charge_time = 2.8            
 
 @onready var timer: Timer = $Timer
@@ -21,6 +21,7 @@ func _ready() -> void:
 @warning_ignore("shadowed_variable")
 func check_level():
 	match level:
+		0: fire_rate = INF
 		1: fire_rate = 20
 		2: fire_rate = 15
 		3: fire_rate = 10

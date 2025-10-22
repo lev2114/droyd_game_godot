@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://dkpmychg04xuw"]
 
 [ext_resource type="Script" uid="uid://c8cqehjyemo4w" path="res://elements/Enemy/enemy.gd" id="1_7je8s"]
-[ext_resource type="Texture2D" uid="uid://bk2wysi6ebjvo" path="res://assets/icon.svg" id="1_lukkh"]
+[ext_resource type="Texture2D" uid="uid://b358q8624vifx" path="res://assets/Палестинский протестующий.png" id="2_7je8s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7je8s"]
-radius = 64.00781
+radius = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7je8s"]
 size = Vector2(150, 150)
@@ -15,7 +15,9 @@ collision_mask = 5
 script = ExtResource("1_7je8s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_lukkh")
+scale = Vector2(0.163, 0.163)
+texture = ExtResource("2_7je8s")
+region_rect = Rect2(85.913086, 67.64184, 495.16937, 460.8719)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7je8s")

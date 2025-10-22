@@ -28,4 +28,7 @@ func take_damage(damage: int) -> void:
 	current_health -= damage
 	health_changed.emit(current_health, max_health)
 	if current_health <= 0:
-		queue_free()
+		die()
+
+func die() -> void:
+	set_physics_process(false)

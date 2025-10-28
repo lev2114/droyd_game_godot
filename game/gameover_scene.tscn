@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv448rb6t45fi"]
+
+[ext_resource type="Script" uid="uid://brcglqoahr401" path="res://elements/DeathScene/death_scene.gd" id="1_bohx7"]
+[ext_resource type="Texture2D" uid="uid://dt3ysdhaja3em" path="res://assets/death_screen.png" id="2_0w8d4"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_bohx7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="gameover_scene" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_0w8d4")

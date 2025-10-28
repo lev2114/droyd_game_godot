@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmyn7x0xl270j"]
+[gd_scene load_steps=7 format=3 uid="uid://dmyn7x0xl270j"]
 
-[ext_resource type="Script" path="res://elements/FentBeam/fent_beam.gd" id="1_be87y"]
 [ext_resource type="Texture2D" uid="uid://bmxv6esggo2x7" path="res://assets/Lovepik_com-611645078-Particle light effect.png" id="2_52w0f"]
 [ext_resource type="AudioStream" uid="uid://mlj0atdg684b" path="res://assets/sounds/laser_sound.mp3" id="2_be87y"]
 
@@ -21,7 +20,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0.6933333, 0.6933333, 0.6933333, 1, 0.0705
 [node name="FentBeam" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_be87y")
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 6.0

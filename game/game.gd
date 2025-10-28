@@ -4,6 +4,7 @@ extends Node2D
 @onready var enemy_scene = preload("res://elements/Enemy/Enemy.tscn")
 @onready var player = $George
 @onready var player_camera = $George/Camera2D
+@onready var gameover_scene= preload("res://game/gameover_scene.tscn")
 
 @warning_ignore("shadowed_variable")
 func spawn_enemy_near_player(player: Node2D, camera: Camera2D) -> void:
@@ -41,3 +42,6 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	if player:
 		spawn_enemy_near_player(player, player_camera)
+
+func gameover() -> void:
+	add_child(gameover_scene.instantiate())

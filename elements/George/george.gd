@@ -31,5 +31,5 @@ func take_damage(damage: int) -> void:
 		die()
 
 func die() -> void:
-	var death_screen = get_node("../DeathScene")
-	death_screen.show_death()
+	get_tree().paused = true
+	get_parent().gameover()

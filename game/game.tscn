@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://brkp2arx4tnbc"]
+[gd_scene load_steps=4 format=3 uid="uid://brkp2arx4tnbc"]
 
 [ext_resource type="Script" uid="uid://cdpqqw6mc8dmv" path="res://game/game.gd" id="1_h7iqs"]
 [ext_resource type="Texture2D" uid="uid://dduet3o8oxf36" path="res://assets/Official_Presidential_Portrait_of_President_Donald_J._Trump_(2025).jpg" id="2_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://did78rn68vacv" path="res://elements/George/George.tscn" id="3_dxrkv"]
-[ext_resource type="PackedScene" uid="uid://i44j8gmgp6rk" path="res://elements/DeathScene/DeathScene.tscn" id="4_dxrkv"]
-[ext_resource type="Texture2D" uid="uid://dt3ysdhaja3em" path="res://assets/death_screen.png" id="5_dxrkv"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_h7iqs")
@@ -17,15 +15,3 @@ texture = ExtResource("2_4fuuu")
 position = Vector2(-207, 230)
 
 [node name="Timer" type="Timer" parent="."]
-
-[node name="DeathScene" parent="." instance=ExtResource("4_dxrkv")]
-
-[node name="Image" type="TextureRect" parent="DeathScene"]
-light_mask = 16
-visibility_layer = 16
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_dxrkv")

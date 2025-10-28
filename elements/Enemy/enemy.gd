@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var max_hp: int = 2
 var hp: int
 
-@export var attack_damage: int = 2
+@export var attack_damage: int = 30
 
 @onready var player: CharacterBody2D = null
 var can_attack = true

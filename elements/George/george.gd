@@ -31,4 +31,5 @@ func take_damage(damage: int) -> void:
 		die()
 
 func die() -> void:
-	set_physics_process(false)
+	var death_screen = get_node("../DeathScene")
+	death_screen.show_death()

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxvlrowkmkkil"]
+
+[ext_resource type="Script" uid="uid://bwcmi1vjqhqdq" path="res://elements/Airstrike/AirstrikeMarker/airstrike_marker.gd" id="1_iff3r"]
+[ext_resource type="Texture2D" uid="uid://4prgndg1r0g" path="res://assets/symbole-cible-bleue.png" id="2_2mhr2"]
+
+[node name="AirstrikeMarker" type="Node2D"]
+script = ExtResource("1_iff3r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_2mhr2")

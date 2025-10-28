@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bbnnhes3j5267"]
 
-[ext_resource type="Script" uid="uid://bn287uxdviisu" path="res://elements/FentBeam/fent_beam.gd" id="1_be87y"]
+[ext_resource type="Script" uid="uid://bn287uxdviisu" path="res://elements/FentBeam/FentBeamProj/fent_beam.gd" id="1_be87y"]
 [ext_resource type="Texture2D" uid="uid://bmxv6esggo2x7" path="res://assets/Lovepik_com-611645078-Particle light effect.png" id="2_52w0f"]
 [ext_resource type="AudioStream" uid="uid://r658qi37qdiw" path="res://assets/sounds/laser_sound.mp3" id="2_be87y"]
 

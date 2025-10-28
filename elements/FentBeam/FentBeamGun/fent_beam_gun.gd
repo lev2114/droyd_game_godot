@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var beam_scene: PackedScene = preload("res://elements/FentBeam/FentBeam.tscn")
+@export var beam_scene: PackedScene = preload("res://elements/FentBeam/FentBeamProj/FentBeam.tscn")
 @export var fire_rate: float = 20         # время между выстрелами
 @export var beam_duration: float = 5.0  # длительность действия луча 
 @export var beam_range: float = 1000.0       # длина луча

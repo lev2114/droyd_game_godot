@@ -7,9 +7,9 @@
 script = ExtResource("1_bohx7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1600.0
+offset_bottom = 900.0
 
-[node name="gameover_scene" type="TextureRect" parent="MarginContainer"]
+[node name="DeathScene" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
 texture = ExtResource("2_0w8d4")

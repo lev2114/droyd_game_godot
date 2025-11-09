@@ -1,12 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://bv448rb6t45fi"]
 
-[ext_resource type="Script" uid="uid://brcglqoahr401" path="res://elements/DeathScene/death_scene.gd" id="1_bohx7"]
-[ext_resource type="Texture2D" uid="uid://dt3ysdhaja3em" path="res://assets/death_screen.png" id="2_0w8d4"]
-[ext_resource type="Texture2D" uid="uid://csjn3sv5h07ie" path="res://assets/RestartIcon2.png" id="3_anq5b"]
-[ext_resource type="Script" uid="uid://c2ggy6lqxk6ot" path="res://game/button.gd" id="4_nvcgj"]
+[ext_resource type="Script" uid="uid://brcglqoahr401" path="res://game/death_scene.gd" id="1_bohx7"]
+[ext_resource type="Texture2D" uid="uid://bt8anrd628uyn" path="res://assets/death_screen_new.jpg" id="2_anq5b"]
+[ext_resource type="Texture2D" uid="uid://c2mddae1vlfdc" path="res://assets/RESTART.png" id="3_nvcgj"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_mbbyv"]
-font_size = 140
+[sub_resource type="SystemFont" id="SystemFont_anq5b"]
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_nvcgj"]
+default_font = SubResource("SystemFont_anq5b")
+default_font_size = 100
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_bohx7")
@@ -17,28 +20,26 @@ offset_bottom = 900.0
 
 [node name="DeathScene" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-texture = ExtResource("2_0w8d4")
+texture = ExtResource("2_anq5b")
 
-[node name="LabelVBox" type="VBoxContainer" parent="MarginContainer"]
+[node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
+theme = SubResource("Theme_nvcgj")
 
-[node name="LabelHBox" type="HBoxContainer" parent="MarginContainer/LabelVBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/LabelVBox/LabelHBox"]
-layout_mode = 2
-text = "Game over"
-label_settings = SubResource("LabelSettings_mbbyv")
-
-[node name="ButtonVBox" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="ButtonVBox" type="VBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = -13.0
+offset_right = 1547.0
+offset_bottom = 1226.0
 alignment = 1
 
-[node name="ButtonHBox" type="HBoxContainer" parent="MarginContainer/ButtonVBox"]
+[node name="ButtonHBox" type="HBoxContainer" parent="MarginContainer/Control/ButtonVBox"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/ButtonVBox/ButtonHBox"]
+[node name="Button" type="Button" parent="MarginContainer/Control/ButtonVBox/ButtonHBox"]
 layout_mode = 2
-text = "Restart"
-icon = ExtResource("3_anq5b")
-script = ExtResource("4_nvcgj")
+icon = ExtResource("3_nvcgj")
+flat = true
+
+[connection signal="pressed" from="MarginContainer/Control/ButtonVBox/ButtonHBox/Button" to="." method="_on_button_pressed"]

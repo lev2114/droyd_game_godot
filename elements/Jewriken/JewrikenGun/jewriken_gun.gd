@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var shuriken_scene: PackedScene = preload("res://elements/Jewriken/jewrikenProj/jewriken.tscn")
-@export var fire_rate: float = 9999
+@export var fire_rate: float = 3
 @export var spread_angle: float = 20
 @export var count: int = 3
 @export var shuriken_speed: float = 550.0

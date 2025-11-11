@@ -3,9 +3,12 @@ extends CharacterBody2D
 @export var speed: float = 200.0
 @export var max_health: int = 30
 @export var current_health: int = max_health
-@export var exp: int = 0
+@export var experience: int = 0
+@export var amount_needed = 100
+@export var level = 1
 
 signal health_changed(current_health, max_health)
+signal lvl_up(level)
 
 func _ready() -> void:
 	add_to_group("player")
@@ -32,7 +35,15 @@ func take_damage(damage: int) -> void:
 		die()
 
 func add_exp(amount: int) -> void:
-	exp += amount
+	experience += amount
+	check_exp()
+
+func check_exp() -> void:
+	if experience >= amount_needed:
+		level += 1
+		print("lvl up!")
+		lvl_up.emit(level)
+		amount_needed *= 2.1
 
 func die() -> void:
 	get_tree().paused = true

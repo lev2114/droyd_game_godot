@@ -25,7 +25,7 @@ func take_damage(damage: int) -> void:
 		die()
 
 func die():
-	var orb_scene = preload("C:/Users/vanya/Documents/GitHub/droyd_game_godot/elements/ExpOrb/ExpOrb.tscn")
+	var orb_scene = preload("res://elements/ExpOrb/ExpOrb.tscn")
 	var orb = orb_scene.instantiate()
 	get_parent().add_child(orb)
 	orb.global_position = global_position

@@ -22,7 +22,14 @@ func _on_attack_area_body_entered(body) -> void:
 func take_damage(damage: int) -> void:
 	hp -= damage
 	if hp <= 0:
-		queue_free()
+		die()
+
+func die():
+	var orb_scene = preload("C:/Users/vanya/Documents/GitHub/droyd_game_godot/elements/ExpOrb/ExpOrb.tscn")
+	var orb = orb_scene.instantiate()
+	get_parent().add_child(orb)
+	orb.global_position = global_position
+	queue_free()
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:

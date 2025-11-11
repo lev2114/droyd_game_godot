@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed: float = 200.0
 @export var max_health: int = 30
 @export var current_health: int = max_health
+@export var exp: int = 0
 
 signal health_changed(current_health, max_health)
 
@@ -29,6 +30,9 @@ func take_damage(damage: int) -> void:
 	health_changed.emit(current_health, max_health)
 	if current_health <= 0:
 		die()
+
+func add_exp(amount: int) -> void:
+	exp += amount
 
 func die() -> void:
 	get_tree().paused = true

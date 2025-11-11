@@ -5,6 +5,7 @@ extends Node2D
 @onready var player = $George
 @onready var player_camera = $George/Camera2D
 @onready var gameover_scene= preload("res://game/gameover_scene.tscn")
+@onready var lvlup_scene = preload("res://elements/UI/LevelUpUI/LevelUp.tscn")
 
 @warning_ignore("shadowed_variable")
 func spawn_enemy_near_player(player: Node2D, camera: Camera2D) -> void:
@@ -45,3 +46,14 @@ func _on_timer_timeout() -> void:
 
 func gameover() -> void:
 	add_child(gameover_scene.instantiate())
+
+@warning_ignore("unused_parameter")
+func _on_george_lvl_up(level: Variant) -> void:
+	var ui = lvlup_scene.instantiate()
+	get_tree().current_scene.add_child(ui)
+	ui.upgrade_chosen.connect(_on_upgrade_selected)
+
+func _on_upgrade_selected(upgradeName: String):
+	get_tree().paused = false
+	var weapon = $George.get_node(upgradeName)
+	weapon.upgrade()

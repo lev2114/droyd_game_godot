@@ -84,3 +84,7 @@ func shoot(target: CharacterBody2D) -> void:
 	flash.modulate.a = 1.0
 	await get_tree().create_timer(0.05).timeout  # длительность вспышки
 	flash.modulate.a = 0.0
+
+func upgrade() -> void:
+	if level < 4:
+		level += 1

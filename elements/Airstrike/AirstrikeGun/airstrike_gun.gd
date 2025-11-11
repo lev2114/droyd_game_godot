@@ -7,7 +7,7 @@ extends Node2D
 @export var delay_before_strike: float = 1.0
 @export var explosion_radius: float = 200
 @export var damage: int = 5
-@export var level: int = 4
+@export var level: int = 0
 
 
 @onready var audio = $AudioStreamPlayer2D
@@ -75,3 +75,9 @@ func call_double_strike():
 		marker.global_position = pos
 		marker.setup(projectile_scene, damage, explosion_radius, delay_before_strike)
 	
+func upgrade() -> void:
+	if level < 4:
+		level += 1
+		check_level()
+		timer.timeout.connect(_on_timer_timeout)
+		timer.start()

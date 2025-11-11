@@ -6,24 +6,24 @@ extends Node2D
 @export var count: int = 3
 @export var shuriken_speed: float = 550.0
 @export var shuriken_damage: int = 1
-@export var level: int = 1
+@export var level: int = 0
 
 @onready var timer: Timer = $Timer
 @onready var muzzle: Marker2D = $Muzzle
 
 func _ready() -> void:
 	check_level()
-	timer.wait_time = fire_rate
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
 
 func check_level():
 	match level:
 		0: fire_rate = INF
-		1: shuriken_damage = 1
+		1: shuriken_damage = 1; fire_rate = 3
 		2: count = 5
 		3: shuriken_damage = 3
 		4: pass
+	timer.wait_time = fire_rate
 
 func _on_timer_timeout() -> void:
 	if level < 4:
@@ -107,3 +107,10 @@ func _process(delta: float) -> void:
 		s.set_meta("angle", angle)
 		s.global_position = global_position + Vector2(radius, 0).rotated(angle)
 		s.rotation = angle + PI / 2
+
+func upgrade() -> void:
+	if level < 4:
+		level += 1
+		check_level()
+		timer.timeout.connect(_on_timer_timeout)
+		timer.start()

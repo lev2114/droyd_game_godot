@@ -15,3 +15,5 @@ texture = ExtResource("2_4fuuu")
 position = Vector2(-207, 230)
 
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="lvl_up" from="George" to="." method="_on_george_lvl_up"]

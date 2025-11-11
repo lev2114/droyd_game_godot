@@ -43,7 +43,8 @@ func check_exp() -> void:
 		level += 1
 		print("lvl up!")
 		lvl_up.emit(level)
-		amount_needed *= 2.1
+		experience -= amount_needed
+		amount_needed *= 1.1
 
 func die() -> void:
 	get_tree().paused = true

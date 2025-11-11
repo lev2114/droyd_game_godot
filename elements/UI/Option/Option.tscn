@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://6ivay0q54rwn"]
+
+[ext_resource type="Texture2D" uid="uid://cxhdn2es4o06d" path="res://assets/Option.png" id="1_rwyvg"]
+[ext_resource type="Texture2D" uid="uid://bmeg2ke4uvbt3" path="res://assets/Option darker.png" id="2_ope3i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rwyvg"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_ope3i"]
+font_size = 20
+
+[node name="TextureButton" type="TextureButton"]
+texture_normal = ExtResource("1_rwyvg")
+texture_pressed = ExtResource("2_ope3i")
+texture_hover = ExtResource("2_ope3i")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 72.0
+offset_right = 366.0
+offset_bottom = 187.0
+text = "ffgfgdfg"
+label_settings = SubResource("LabelSettings_rwyvg")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 356.0
+offset_right = 368.0
+offset_bottom = 663.0
+text = "gyhujkgkjgkghjghjbdbcvbcvbcasdasdasd dfsdfsdfsd sdfsdfsdf sdfsdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdfsdfsdfs sdf sdfsdfsdf"
+label_settings = SubResource("LabelSettings_ope3i")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

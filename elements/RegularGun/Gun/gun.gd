@@ -4,17 +4,31 @@ extends Node2D
 @export var fire_rate: float = 1
 @export var bullet_speed: float = 500.0
 @export var level: int = 1
+@export var is_enemy_gun: bool = true
 @onready var timer: Timer = $Timer
 
 func _ready() -> void:
+	var parent = get_parent()
+	if parent and parent.is_in_group("enemies"):
+		is_enemy_gun = true
+	elif parent and parent.is_in_group("player"):
+		is_enemy_gun = false
+
 	timer.wait_time = fire_rate
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
+	print("GUN READY:", get_parent().name, "is_enemy_gun =", is_enemy_gun)
 
 func _on_timer_timeout() -> void:
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	if enemies.is_empty():
+	if is_enemy_gun:
+		var player = get_tree().get_first_node_in_group("player")
+		if player:
+			shoot(player)
 		return
+	else:
+		var enemies = get_tree().get_nodes_in_group("enemies")
+		if enemies.is_empty():
+			return
 
 	match level:
 		1:
@@ -70,7 +84,7 @@ func shoot(target: CharacterBody2D) -> void:
 	# увеличенный урон только на 3 уровне
 	if level >= 3:
 		bullet.damage *= 2
-	
+
 	# --- ЭФФЕКТЫ ---
 	# звук
 	var audio = $AudioStreamPlayer2D
@@ -88,3 +102,5 @@ func shoot(target: CharacterBody2D) -> void:
 func upgrade() -> void:
 	if level < 4:
 		level += 1
+
+	bullet.is_enemy_bullet = is_enemy_gun

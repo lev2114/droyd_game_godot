@@ -7,7 +7,7 @@
 radius = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7je8s"]
-size = Vector2(150, 150)
+size = Vector2(130, 130)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2

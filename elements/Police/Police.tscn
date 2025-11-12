@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0yhcorpk4qlr"]
+
+[ext_resource type="Script" uid="uid://cj7i5i0yvk268" path="res://elements/Police/police.gd" id="1_t1uyb"]
+[ext_resource type="Texture2D" uid="uid://b358q8624vifx" path="res://assets/Палестинский протестующий.png" id="2_8lfc4"]
+[ext_resource type="PackedScene" uid="uid://j784c3lwsblj" path="res://elements/RegularGun/Gun/gun.tscn" id="2_kfkhx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lfc4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b4ta5"]
+
+[node name="Police" type="CharacterBody2D"]
+script = ExtResource("1_t1uyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8lfc4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("2_8lfc4")
+
+[node name="Gun" parent="." instance=ExtResource("2_kfkhx")]
+
+[node name="DirectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionArea"]
+shape = SubResource("CircleShape2D_b4ta5")

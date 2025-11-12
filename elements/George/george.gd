@@ -41,7 +41,6 @@ func add_exp(amount: int) -> void:
 func check_exp() -> void:
 	if experience >= amount_needed:
 		level += 1
-		print("lvl up!")
 		lvl_up.emit(level)
 		amount_needed *= 2.1
 

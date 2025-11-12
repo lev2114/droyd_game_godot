@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var timer = $Timer
 @onready var enemy_scene = preload("res://elements/Enemy/Enemy.tscn")
+@onready var police_scene = preload("res://elements/Police/Police.tscn")
 @onready var player = $George
 @onready var player_camera = $George/Camera2D
 @onready var gameover_scene= preload("res://game/gameover_scene.tscn")
@@ -27,7 +28,7 @@ func spawn_enemy_near_player(player: Node2D, camera: Camera2D) -> void:
 		if spawn_position.distance_to(player.global_position) >= 500:
 			break
 	
-	var enemy = enemy_scene.instantiate()
+	var enemy = police_scene.instantiate()
 	get_tree().current_scene.add_child(enemy)
 	enemy.global_position = spawn_position
 

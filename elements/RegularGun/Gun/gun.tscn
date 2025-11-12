@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://j784c3lwsblj"]
 
 [ext_resource type="Script" uid="uid://bi02t20kkhf6q" path="res://elements/RegularGun/Gun/gun.gd" id="1_8m3xb"]
-[ext_resource type="AudioStream" uid="uid://b8y6jhqv12yfc" path="res://assets/sounds/gunshot.wav" id="2_nuog2"]
+[ext_resource type="AudioStream" uid="uid://bu6cnmqc7ymik" path="res://assets/sounds/gunshot.wav" id="2_nuog2"]
 [ext_resource type="Texture2D" uid="uid://hsptvnvr1qd4" path="res://assets/pngwing.com (1).png" id="3_fl546"]
 
 [node name="Gun" type="Node2D"]

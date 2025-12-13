@@ -9,8 +9,10 @@ extends CharacterBody2D
 
 signal health_changed(current_health, max_health)
 signal lvl_up(level)
+signal xp_changed(current_xp: float, xp_to_next: float)
 
 func _ready() -> void:
+	$AnimatedSprite2D.play("default")
 	add_to_group("player")
 	var health_bar = get_tree().get_first_node_in_group("health_bar")
 	
@@ -24,6 +26,11 @@ func _physics_process(delta: float):
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
+	
+	if input_vector.x > 0:
+		$AnimatedSprite2D.flip_h = false  
+	elif input_vector.x < 0:
+		$AnimatedSprite2D.flip_h = true
 
 	velocity = input_vector * speed
 	move_and_slide()
@@ -36,6 +43,7 @@ func take_damage(damage: int) -> void:
 
 func add_exp(amount: int) -> void:
 	experience += amount
+	xp_changed.emit(experience, amount_needed)
 	check_exp()
 
 func check_exp() -> void:
@@ -44,6 +52,7 @@ func check_exp() -> void:
 		lvl_up.emit(level)
 		experience -= amount_needed
 		amount_needed *= 1.1
+	xp_changed.emit(experience, amount_needed)
 
 func die() -> void:
 	get_tree().paused = true

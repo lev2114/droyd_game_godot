@@ -7,6 +7,10 @@ extends Node2D
 @onready var player_camera = $George/Camera2D
 @onready var gameover_scene= preload("res://game/gameover_scene.tscn")
 @onready var lvlup_scene = preload("res://elements/UI/LevelUpUI/LevelUp.tscn")
+@onready var mainUi = preload("res://elements/UI/MainUi/MainUI.tscn")
+
+@export var global_time = 0
+@export var enemy_power_multiplier := 1.0
 
 @warning_ignore("shadowed_variable")
 func spawn_enemy_near_player(player: Node2D, camera: Camera2D) -> void:
@@ -29,9 +33,11 @@ func spawn_enemy_near_player(player: Node2D, camera: Camera2D) -> void:
 		if spawn_position.distance_to(player.global_position) >= 500:
 			break
 	
-	var enemy = police_scene.instantiate()
+	var enemy = enemy_scene.instantiate()
 	get_tree().current_scene.add_child(enemy)
 	enemy.global_position = spawn_position
+	
+	enemy.apply_difficulty(enemy_power_multiplier)
 
 
 
@@ -40,10 +46,16 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
 	spawn_enemy_near_player(player, player_camera)
+	var ui = mainUi.instantiate()
+	add_child(ui)
 
 func _on_timer_timeout() -> void:
 	if player:
 		spawn_enemy_near_player(player, player_camera)
+	global_time += 1
+
+	if global_time % 30 == 0:
+		enemy_power_multiplier += 0.2
 
 func gameover() -> void:
 	add_child(gameover_scene.instantiate())

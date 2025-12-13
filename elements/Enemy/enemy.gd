@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 @export var speed: float = 130.0
-@export var max_hp: int = 2
-var hp: int
+@export var max_hp: float = 1.0
+var hp: float
 
-@export var attack_damage: int = 30
+@export var attack_damage: int = 2
 
 @onready var player: CharacterBody2D = null
 var can_attack = true
@@ -13,6 +13,12 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	add_to_group("enemies")
 	hp = max_hp
+
+func apply_difficulty(multiplier: float):
+	hp = float(hp * multiplier)
+	if multiplier >= 10:
+		speed += 10
+	attack_damage += multiplier
 
 func _on_attack_area_body_entered(body) -> void:
 	

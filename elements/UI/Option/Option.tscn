@@ -28,7 +28,7 @@ autowrap_mode = 3
 [node name="Description" type="Label" parent="."]
 layout_mode = 0
 offset_left = 63.0
-offset_top = 356.0
+offset_top = 419.0
 offset_right = 368.0
 offset_bottom = 663.0
 text = "gyhujkgkjgkghjghjbdbcvbcvbcasdasdasd dfsdfsdfsd sdfsdfsdf sdfsdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf sdfsdfsdfs sdf sdfsdfsdf"
@@ -36,3 +36,26 @@ label_settings = SubResource("LabelSettings_ope3i")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+offset_left = 57.0
+offset_top = 124.0
+offset_right = 371.0
+offset_bottom = 428.0
+mouse_filter = 2
+
+[node name="Picture" type="TextureRect" parent="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029000001
+anchor_top = 0.148
+anchor_right = 0.95900005
+anchor_bottom = 1.0
+offset_left = -0.10599995
+offset_top = 6.0079994
+offset_right = -0.12600708
+offset_bottom = 15.0
+expand_mode = 1
+stretch_mode = 5

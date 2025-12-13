@@ -11,19 +11,23 @@ signal upgrade_chosen(name: String)
 var weapons_info = {
 	"Gun": {
 		"title": "Пистолет",
-		"desc": "Стреляет пулями в ближайшего врага."
+		"desc": "Стреляет пулями в ближайшего врага.",
+		"picture": "res://assets/optionsPictures/PistolPicture.png"
 	},
 	"FentBeamGun": {
 		"title": "Фент-луч",
-		"desc": "Мощный луч, поражающий всех на линии, вращается вокруг оси"
+		"desc": "Мощный луч, поражающий всех на линии, вращается вокруг оси",
+		"picture": "res://assets/optionsPictures/FentBeam.png"
 	},
 	"jewrikenGun": {
 		"title": "Святые сюрикены",
-		"desc": "Бросает вращающиеся клинки по врагам."
+		"desc": "Бросает вращающиеся клинки по врагам.",
+		"picture": "res://assets/klipartz.com.png"
 	},
 	"AirstrikeGun": {
 		"title": "Авиаудар Моссада",
-		"desc": "Вызывает авиаудар на ближайшего врага."
+		"desc": "Вызывает авиаудар на ближайшего врага.",
+		"picture": "res://assets/optionsPictures/AirDrop.png"
 	}
 }
 
@@ -45,10 +49,12 @@ func _fill_random_options():
 
 		var title_label = buttons[i].get_node("Title")
 		var desc_label = buttons[i].get_node("Description")
-
+		var picture: TextureRect = buttons[i].get_node("Control").get_node("Picture")
+		
 		title_label.text = info["title"]
 		desc_label.text = info["desc"]
-
+		picture.texture = load(info["picture"])
+		
 		buttons[i].set_meta("weapon_name", weapon_name)
 
 func _on_button_pressed(button: TextureButton):

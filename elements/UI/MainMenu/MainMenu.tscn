@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://civuwffkji058"]
+
+[ext_resource type="Texture2D" uid="uid://4hu1agb5ygau" path="res://elements/UI/MainMenu/Kirkinator.png" id="1_5sx2n"]
+[ext_resource type="Script" uid="uid://drxyqtons10lp" path="res://elements/UI/MainMenu/main_menu.gd" id="1_jt8eq"]
+[ext_resource type="Texture2D" uid="uid://cmipr4r13gad1" path="res://elements/UI/MainMenu/George.png" id="2_jt8eq"]
+[ext_resource type="Texture2D" uid="uid://4lj3v7vg0ha6" path="res://elements/UI/MainMenu/MainLabel.png" id="3_iv4st"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sx2n"]
+
+[sub_resource type="Theme" id="Theme_jt8eq"]
+default_font_size = 100
+HSeparator/styles/separator = SubResource("StyleBoxEmpty_5sx2n")
+
+[sub_resource type="Gradient" id="Gradient_fra3w"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_64i0w"]
+gradient = SubResource("Gradient_fra3w")
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_jt8eq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = SubResource("Theme_jt8eq")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1598.0
+offset_bottom = 901.0
+texture = SubResource("GradientTexture1D_64i0w")
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 786.0
+offset_top = 147.0
+offset_right = 1945.0
+offset_bottom = 899.0
+texture = ExtResource("1_5sx2n")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -14.0
+offset_top = 185.0
+offset_right = 762.0
+offset_bottom = 902.0
+texture = ExtResource("2_jt8eq")
+expand_mode = 1
+flip_h = true
+
+[node name="TextureRect4" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 367.0
+offset_top = -302.0
+offset_right = 1259.0
+offset_bottom = 608.0
+texture = ExtResource("3_iv4st")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1597.0
+offset_bottom = 897.0
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Начать игру"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Выход"
+
+[connection signal="pressed" from="Control/VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Button2" to="." method="_on_quit_pressed"]

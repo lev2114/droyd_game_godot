@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbts2j40uk16w"]
+
+[ext_resource type="Script" uid="uid://cvymx1m28clu8" path="res://elements/UI/Pause/pause_ui.gd" id="1_5noi0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5noi0"]
+
+[sub_resource type="Theme" id="Theme_7nv7p"]
+default_font_size = 100
+HSeparator/constants/separation = 4
+HSeparator/styles/separator = SubResource("StyleBoxEmpty_5noi0")
+
+[sub_resource type="Gradient" id="Gradient_7nv7p"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 0.48100004)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5noi0"]
+gradient = SubResource("Gradient_7nv7p")
+
+[sub_resource type="LabelSettings" id="LabelSettings_uk7q2"]
+font_size = 100
+font_color = Color(0.61055017, 0, 1, 1)
+
+[node name="PauseUi" type="CanvasLayer"]
+script = ExtResource("1_5noi0")
+
+[node name="Control" type="Control" parent="."]
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7nv7p")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1597.0
+offset_bottom = 899.0
+texture = SubResource("GradientTexture1D_5noi0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1599.0
+offset_bottom = 901.0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "ПАУЗА"
+label_settings = SubResource("LabelSettings_uk7q2")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(700, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Продолжить"
+
+[node name="HSeparator3" type="HSeparator" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Выйти в меню"
+
+[connection signal="pressed" from="Control/VBoxContainer/Button" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Button2" to="." method="_on_restart_pressed"]

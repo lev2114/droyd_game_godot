@@ -8,9 +8,22 @@ extends Node2D
 @onready var gameover_scene= preload("res://game/gameover_scene.tscn")
 @onready var lvlup_scene = preload("res://elements/UI/LevelUpUI/LevelUp.tscn")
 @onready var mainUi = preload("res://elements/UI/MainUi/MainUI.tscn")
+@onready var pause_scene = preload("res://elements/UI/Pause/PauseUI.tscn")
+@onready var main_menu_scene = preload("res://elements/UI/MainMenu/MainMenu.tscn")
 
 @export var global_time = 0
 @export var enemy_power_multiplier := 1.0
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):
+		open_pause()
+
+func open_pause():
+	if get_tree().paused:
+		return
+	var pause_ui = pause_scene.instantiate()
+	add_child(pause_ui)
+
 
 @warning_ignore("shadowed_variable")
 func spawn_enemy_near_player(player: Node2D, camera: Camera2D) -> void:
@@ -39,15 +52,16 @@ func spawn_enemy_near_player(player: Node2D, camera: Camera2D) -> void:
 	
 	enemy.apply_difficulty(enemy_power_multiplier)
 
-
-
 func _ready() -> void:
+	var ui = mainUi.instantiate()
+	add_child(ui)
+	var menu = main_menu_scene.instantiate()
+	add_child(menu)
 	timer.wait_time = 1
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
 	spawn_enemy_near_player(player, player_camera)
-	var ui = mainUi.instantiate()
-	add_child(ui)
+	
 
 func _on_timer_timeout() -> void:
 	if player:

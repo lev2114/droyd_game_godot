@@ -13,6 +13,9 @@ extends Node2D
 
 @export var global_time = 0
 @export var enemy_power_multiplier := 1.0
+var time_passed := 0.0
+var spawn_interval := 1.5
+var enemies_per_spawn := 1
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):

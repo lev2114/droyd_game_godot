@@ -51,7 +51,7 @@ func check_exp() -> void:
 		level += 1
 		lvl_up.emit(level)
 		experience -= amount_needed
-		amount_needed *= 1.1
+		amount_needed *= 1.5
 	xp_changed.emit(experience, amount_needed)
 
 func die() -> void:

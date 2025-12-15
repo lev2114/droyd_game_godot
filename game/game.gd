@@ -12,6 +12,11 @@ extends Node2D
 @export var global_time = 0
 @export var enemy_power_multiplier := 1.0
 
+var time_passed := 0.0
+var spawn_interval := 1.2
+var enemies_per_spawn := 1
+
+
 @warning_ignore("shadowed_variable")
 func spawn_enemy_near_player(player: Node2D, camera: Camera2D) -> void:
 	if not player or not is_instance_valid(player):
@@ -42,20 +47,28 @@ func spawn_enemy_near_player(player: Node2D, camera: Camera2D) -> void:
 
 
 func _ready() -> void:
-	timer.wait_time = 1
+	timer.wait_time = spawn_interval
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
-	spawn_enemy_near_player(player, player_camera)
+
 	var ui = mainUi.instantiate()
 	add_child(ui)
 
-func _on_timer_timeout() -> void:
-	if player:
-		spawn_enemy_near_player(player, player_camera)
-	global_time += 1
+func _process(delta):
+	time_passed += delta
+	update_difficulty()
 
-	if global_time % 30 == 0:
-		enemy_power_multiplier += 0.2
+func update_difficulty():
+	var stage := int(time_passed / 30.0)
+
+	enemies_per_spawn = 1 + stage
+	enemy_power_multiplier = 1.0 + stage * 0.25
+
+	timer.wait_time = max(0.25, 1.2 - stage * 0.1)	
+
+func _on_timer_timeout():
+	for i in enemies_per_spawn:
+		spawn_enemy_near_player(player, player_camera)
 
 func gameover() -> void:
 	add_child(gameover_scene.instantiate())

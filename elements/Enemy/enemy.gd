@@ -9,6 +9,8 @@ var hp: float
 @onready var player: CharacterBody2D = null
 var can_attack = true
 
+
+
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	add_to_group("enemies")

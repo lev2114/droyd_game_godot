@@ -1,20 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://brkp2arx4tnbc"]
 
 [ext_resource type="Script" uid="uid://cdpqqw6mc8dmv" path="res://game/game.gd" id="1_h7iqs"]
-[ext_resource type="Texture2D" uid="uid://dduet3o8oxf36" path="res://assets/Official_Presidential_Portrait_of_President_Donald_J._Trump_(2025).jpg" id="2_4fuuu"]
+[ext_resource type="PackedScene" uid="uid://gwogo4j88a2c" path="res://elements/WhiteHouseScene/WhiteHouse.tscn" id="2_h7iqs"]
 [ext_resource type="PackedScene" uid="uid://did78rn68vacv" path="res://elements/George/George.tscn" id="3_dxrkv"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_h7iqs")
-global_time = null
-enemy_power_multiplier = null
 
-[node name="OfficialPresidentialPortraitOfPresidentDonaldJ_Trump(2025)" type="Sprite2D" parent="."]
-position = Vector2(-3, -2)
-texture = ExtResource("2_4fuuu")
+[node name="WhiteHouse" parent="." instance=ExtResource("2_h7iqs")]
 
 [node name="George" parent="." instance=ExtResource("3_dxrkv")]
-position = Vector2(-207, 230)
+position = Vector2(-264, 302)
 
 [node name="Timer" type="Timer" parent="."]
 

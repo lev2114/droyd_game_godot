@@ -54,6 +54,7 @@ func spawn_enemy_near_player(player: Node2D, camera: Camera2D) -> void:
 	enemy.global_position = spawn_position
 
 	enemy.apply_difficulty(enemy_power_multiplier)
+	enemy.give_exp.connect($George.add_exp)
 
 func _ready() -> void:
 	var ui = mainUi.instantiate()

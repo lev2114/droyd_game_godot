@@ -2,9 +2,12 @@ extends CharacterBody2D
 
 @export var speed: float = 130.0
 @export var max_hp: float = 1.0
+@export var death_exp: float = 2
 var hp: float
 
-@export var attack_damage: int = 200
+@export var attack_damage: float = 2
+
+signal give_exp(amount)
 
 @onready var player: CharacterBody2D = null
 var can_attack = true
@@ -37,6 +40,7 @@ func die():
 	var orb = orb_scene.instantiate()
 	get_parent().add_child(orb)
 	orb.global_position = global_position
+	give_exp.emit(death_exp)
 	queue_free()
 
 @warning_ignore("unused_parameter")

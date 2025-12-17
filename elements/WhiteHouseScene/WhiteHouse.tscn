@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://gwogo4j88a2c"]
+
+[ext_resource type="Texture2D" uid="uid://buy353rlkorq" path="res://assets/pngegg.png" id="1_ulc6d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghpb0"]
+size = Vector2(888, 367)
+
+[node name="WhiteHouse" type="StaticBody2D"]
+collision_layer = 15
+collision_mask = 15
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ulc6d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, 42.5)
+shape = SubResource("RectangleShape2D_ghpb0")

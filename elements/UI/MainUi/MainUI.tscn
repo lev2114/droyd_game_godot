@@ -1,34 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1gqemugvavku"]
+[gd_scene format=3 uid="uid://b1gqemugvavku"]
 
 [ext_resource type="Script" uid="uid://b60ggnix7802f" path="res://elements/UI/MainUi/main_ui.gd" id="1_itjiq"]
 
-[node name="MainUi" type="CanvasLayer"]
+[sub_resource type="LabelSettings" id="LabelSettings_itjiq"]
+font_size = 56
+font_color = Color(0.9507851, 0, 0.15460095, 1)
+
+[node name="MainUi" type="CanvasLayer" unique_id=171452312]
 script = ExtResource("1_itjiq")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=586028349]
 autostart = true
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=649301944]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1600.0
-offset_bottom = 900.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-layout_mode = 0
-offset_right = 1602.0
-offset_bottom = 903.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=742227330]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=769151417]
 layout_mode = 2
 alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="Control/VBoxContainer" unique_id=1906241628]
 modulate = Color(0, 0.89411765, 0.89411765, 1)
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 show_percentage = false
 
-[node name="Label" type="Label" parent="Control/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/VBoxContainer" unique_id=1517945215]
 layout_mode = 2
 horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="Control" unique_id=1639076589]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 517.0
+offset_top = 78.0
+offset_right = -456.0
+offset_bottom = -707.0
+text = "Враги стали сильнее"
+label_settings = SubResource("LabelSettings_itjiq")

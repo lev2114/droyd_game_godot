@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var experience: int = 0
 @export var amount_needed = 100
 @export var level = 1
+@onready var magnet_area: Area2D = $MagnetArea
 
 signal health_changed(current_health, max_health)
 signal lvl_up(level)
@@ -19,6 +20,10 @@ func _ready() -> void:
 	if health_bar:
 		health_changed.connect(health_bar.update_health)
 		health_changed.emit(current_health, max_health)
+
+func _on_magnet_body_entered(body):
+	if body.is_in_group("exp_orb"):
+		body.set_target(self)
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://did78rn68vacv"]
+[gd_scene format=3 uid="uid://did78rn68vacv"]
 
 [ext_resource type="Script" uid="uid://bgx1hvhrsjq7t" path="res://elements/George/george.gd" id="1_yiuy0"]
 [ext_resource type="Texture2D" uid="uid://d23iiedg07tre" path="res://assets/animation/Снимок экрана 2025-12-11 170158.png" id="2_arety"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://dk5pupga8iutq" path="res://elements/Airstrike/AirstrikeGun/airstrike_gun.tscn" id="7_fntbw"]
 [ext_resource type="Texture2D" uid="uid://cqt4u5mak5nyp" path="res://assets/animation/Снимок экрана 2025-12-11 170841.png" id="7_h1khm"]
 [ext_resource type="Texture2D" uid="uid://dx2elff6obuxu" path="res://assets/animation/Снимок экрана 2025-12-11 170907.png" id="8_7ws0n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_arety"]
+radius = 81.055534
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kj7up"]
 animations = [{
@@ -50,31 +53,40 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vy02y"]
-radius = 49.0408
+radius = 32.0
 
-[node name="CharacterBody2D2" type="CharacterBody2D"]
+[node name="CharacterBody2D2" type="CharacterBody2D" unique_id=114940664]
 collision_layer = 15
 collision_mask = 15
 script = ExtResource("1_yiuy0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-sprite_frames = SubResource("SpriteFrames_kj7up")
-frame_progress = 0.053223684
+[node name="PickupArea" type="Area2D" parent="." unique_id=1659796178]
+collision_layer = 0
+monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=306437400]
+shape = SubResource("CircleShape2D_arety")
+debug_color = Color(0.8303168, 0.0014510459, 0.945857, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1665826650]
+scale = Vector2(0.13, 0.13)
+sprite_frames = SubResource("SpriteFrames_kj7up")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1916696373]
 visibility_layer = 2
 shape = SubResource("CircleShape2D_vy02y")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2066569152]
 
-[node name="Gun" parent="." instance=ExtResource("3_ut1aa")]
+[node name="Gun" parent="." unique_id=2073176384 instance=ExtResource("3_ut1aa")]
 
-[node name="FentBeamGun" parent="." instance=ExtResource("4_vy02y")]
+[node name="FentBeamGun" parent="." unique_id=1431410687 instance=ExtResource("4_vy02y")]
 script = ExtResource("5_t7ufc")
 
-[node name="jewrikenGun" parent="." instance=ExtResource("7_7w684")]
+[node name="jewrikenGun" parent="." unique_id=149851203 instance=ExtResource("7_7w684")]
 
-[node name="AirstrikeGun" parent="." instance=ExtResource("7_fntbw")]
+[node name="AirstrikeGun" parent="." unique_id=1523606277 instance=ExtResource("7_fntbw")]
 
-[node name="HealthBar" parent="." instance=ExtResource("6_f2k7x")]
+[node name="HealthBar" parent="." unique_id=296511924 instance=ExtResource("6_f2k7x")]
+
+[connection signal="area_entered" from="PickupArea" to="." method="_on_magnet_body_entered"]

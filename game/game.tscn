@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://brkp2arx4tnbc"]
 
 [ext_resource type="Script" uid="uid://cdpqqw6mc8dmv" path="res://game/game.gd" id="1_h7iqs"]
+[ext_resource type="PackedScene" uid="uid://cnbwp2ot7hu4l" path="res://game/map.tscn" id="2_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://gwogo4j88a2c" path="res://elements/WhiteHouseScene/WhiteHouse.tscn" id="2_h7iqs"]
 [ext_resource type="PackedScene" uid="uid://did78rn68vacv" path="res://elements/George/George.tscn" id="3_dxrkv"]
 
 [node name="Game" type="Node2D" unique_id=700049410]
 script = ExtResource("1_h7iqs")
+
+[node name="Map" parent="." unique_id=1869082603 instance=ExtResource("2_4fuuu")]
 
 [node name="WhiteHouse" parent="." unique_id=1164063223 instance=ExtResource("2_h7iqs")]
 
